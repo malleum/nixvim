@@ -33,6 +33,7 @@
     };
     extraPlugins = with pkgs.vimPlugins; [
       vim-visual-multi
+      vim-indent-object
     ];
   };
 }
