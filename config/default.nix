@@ -1,4 +1,4 @@
-{
+{pkgs, ...}:  {
   imports = [
     ./options.nix
     ./lsp.nix
@@ -7,6 +7,7 @@
 
   config = {
     plugins = {
+      nvim-autopairs.enable = true;
       lualine.enable = true;
       surround.enable = true;
       treesitter.enable = true;
@@ -28,6 +29,10 @@
         };
       };
       oil.enable = true;
+      fugitive.enable = true;
     };
+    extraPlugins = with pkgs.vimPlugins; [
+      vim-visual-multi
+    ];
   };
 }

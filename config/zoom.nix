@@ -17,5 +17,23 @@
     leap = {
       enable = true;
     };
+
+    harpoon = {
+      enable = true;
+      menu = {
+      width = 100;
+      height = 6;
+      };
+      keymaps = {
+        addFile = "<leader>a";
+        toggleQuickMenu = "<leader>o";
+        navFile = {
+          "1" = "<C-A-h>";
+          "2" = "<C-A-t>";
+          "3" = "<C-A-n>";
+          "4" = "<C-A-s>";
+        };
+      };
+    };
   };
 }
