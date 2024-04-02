@@ -43,14 +43,15 @@
     nvim-cmp = {
       enable = true;
       autoEnableSources = true;
-      sources = [
-        {name = "nvim_lsp";}
-        {name = "luasnip";}
-        {name = "nvim_lua";}
-        {name = "path";}
-        {name = "buffer";}
-      ];
-      preselect = "Item";
+      extraOptions = {
+        sources = [
+          {name = "nvim_lsp";}
+          {name = "luasnip";}
+          {name = "nvim_lua";}
+          {name = "path";}
+          {name = "buffer";}
+        ];
+      };
       completion = {
         completeopt = "menu,menuone,noinsert";
       };
