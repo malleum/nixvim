@@ -12,7 +12,7 @@
       surround.enable = true;
       treesitter.enable = true;
       undotree.enable = true;
-      comment-nvim.enable = true;
+      comment.enable = true;
       conform-nvim = {
         enable = true;
         formattersByFt = {

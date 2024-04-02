@@ -1,6 +1,6 @@
 {
   config = {
-    options = {
+    opts = {
       autoindent = true;
       expandtab = true;
       shiftwidth = 4;

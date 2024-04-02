@@ -40,10 +40,10 @@
         store_selection_keys = "<Tab>";
       };
     };
-    nvim-cmp = {
+    cmp = {
       enable = true;
       autoEnableSources = true;
-      extraOptions = {
+      settings = {
         sources = [
           {name = "nvim_lsp";}
           {name = "luasnip";}
@@ -51,12 +51,9 @@
           {name = "path";}
           {name = "buffer";}
         ];
-      };
-      completion = {
-        completeopt = "menu,menuone,noinsert";
-      };
-      mapping = {
-        "<CR>" = "cmp.mapping.confirm({ select = true })";
+        mapping = {
+          "<CR>" = "cmp.mapping.confirm({ select = true })";
+        };
       };
     };
   };
