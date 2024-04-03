@@ -14,7 +14,6 @@
         lua-ls.enable = true;
         nixd.enable = true;
         pyright.enable = true;
-        rnix-lsp.enable = true;
       };
       keymaps = {
         diagnostic = {
