@@ -4,12 +4,13 @@
     lsp = {
       enable = true;
       servers = {
-        lua-ls.enable = true;
+        clangd.enable = true;
         gopls.enable = true;
         html.enable = true;
         htmx.enable = true;
         jsonls.enable = true;
         kotlin-language-server.enable = true;
+        lua-ls.enable = true;
         nil_ls.enable = true;
         pyright.enable = true;
         rnix-lsp.enable = true;

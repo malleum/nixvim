@@ -16,3 +16,10 @@ nix run .
 ```
 nix run github:speedster33/nixvim --experimental-features 'nix-command flakes'
 ```
+
+#### TODO
+- [ ] hover border
+- [ ] <C-n>/<C-p> for lsp conmpletion
+- [ ] lsp kemaps syntax update
+- [ ] telescope config
+- [ ] lualine config
