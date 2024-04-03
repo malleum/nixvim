@@ -1,17 +1,18 @@
-# Nixvim template
-
-This template gives you a good starting point for configuring nixvim standalone.
-
-## Configuring
-
-To start configuring, just add or modify the nix files in `./config`.
-If you add a new configuration file, remember to add it to the
-[`config/default.nix`](./config/default.nix) file
+# Nixvim Malleus Edition
 
 ## Testing your new configuration
 
 To test your configuration simply run the following command
+```
+nix flake check .
+```
 
+## Running Locally
 ```
 nix run .
+```
+
+## Running
+```
+nix run github:speedster33/nixvim --experimental-features 'nix-command flakes'
 ```
