@@ -1,4 +1,4 @@
-{pkgs, ...}:  {
+{pkgs, ...}: {
   imports = [
     ./options.nix
     ./lsp.nix
@@ -29,8 +29,11 @@
         };
       };
       oil.enable = true;
-      fugitive.enable = true;
+      # fugitive.enable = true;
+      neogit.enable = true;
+      vimtex.enable = true;
     };
+
     extraPlugins = with pkgs.vimPlugins; [
       vim-visual-multi
       vim-indent-object

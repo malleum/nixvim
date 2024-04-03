@@ -5,32 +5,38 @@
       enable = true;
       servers = {
         clangd.enable = true;
+        dartls.enable = true;
         gopls.enable = true;
         html.enable = true;
         htmx.enable = true;
         jsonls.enable = true;
         kotlin-language-server.enable = true;
         lua-ls.enable = true;
-        nil_ls.enable = true;
+        nixd.enable = true;
         pyright.enable = true;
         rnix-lsp.enable = true;
       };
+      keymaps = {
+        diagnostic = {
+          "[d" = "goto_next";
+          "]d" = "goto_prev";
+          "gl" = "open_float";
+        };
+        lspBuf = {
+          "K" = "hover";
+          "gd" = "definition";
+          "gD" = "declaration";
+          "gi" = "implementation";
+          "go" = "type_definition";
+          "gr" = "references";
+          "gs" = "signature_help";
+
+          "<leader>rn" = "rename";
+          "<leader>ra" = "code_action";
+          "<leader>rr" = "references";
+        };
+      };
       onAttach = ''
-        vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
-        vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
-        vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
-
-        vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>')
-        vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>')
-        vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
-        vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>')
-        vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
-        vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>')
-        vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
-
-        vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end)
-        vim.keymap.set("n", "<leader>ra", function() vim.lsp.buf.code_action() end)
-        vim.keymap.set("n", "<leader>rr", function() vim.lsp.buf.references() end)
         vim.keymap.set("n", "<leader>f", function() require("conform").format({ async = true, lsp_fallback = true }) end)
       '';
     };
@@ -54,6 +60,8 @@
         ];
         mapping = {
           "<CR>" = "cmp.mapping.confirm({ select = true })";
+          "<C-n>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
+          "<C-p>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
         };
       };
     };
