@@ -1,5 +1,4 @@
 {
-  config = {
     plugins = {
       telescope = {
         extensions = {
@@ -76,5 +75,4 @@
         action = "<cmd>lua require('flash').treesitter_search()<cr>";
       }
     ];
-  };
 }
