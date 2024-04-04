@@ -18,17 +18,17 @@ nix run github:speedster33/nixvim --experimental-features 'nix-command flakes'
 ```
 
 #### TODO
-- [ ] lsp issues
+- [x] lsp issues
     - [x] <C-n>/<C-p> for lsp conmpletion
     - [x] lsp kemaps syntax update
     - [x] dart lsp
-    - [ ] hover border
-    - [ ] fix snippets
-- [ ] new plugins
+    - [x] hover border
+    - [x] fix snippets
+- [x] new plugins
     - [x] neogit
     - [x] latex
-- [ ] update configs
-    - [ ] leap remove x
-    - [ ] telescope config
-    - [ ] lualine config
+    - [x] flash
+- [x] update configs
+    - [x] telescope config
+    - [x] lualine config
 - [ ] seperate options into seperate config

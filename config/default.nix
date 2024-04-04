@@ -8,11 +8,16 @@
   config = {
     plugins = {
       nvim-autopairs.enable = true;
-      lualine.enable = true;
       surround.enable = true;
       treesitter.enable = true;
       undotree.enable = true;
       comment.enable = true;
+
+      oil.enable = true;
+      neogit.enable = true;
+      gitsigns.enable = true;
+      vimtex.enable = true;
+
       conform-nvim = {
         enable = true;
         formattersByFt = {
@@ -28,11 +33,22 @@
           python = ["ruff"];
         };
       };
-      oil.enable = true;
-      # fugitive.enable = true;
-      neogit.enable = true;
-      vimtex.enable = true;
+
+      lualine = {
+        enable = true;
+        sections = {
+          lualine_a = [{name = "mode";}];
+          lualine_b = [{name = "branch";} {name = "diff";} {name = "diagnostics";}];
+          lualine_c = [{name = "filename";}];
+          lualine_x = [{name = "selectioncount";} {name = "filetype";}];
+          lualine_y = [{name = "encoding";} {name = "fileformat";}];
+          lualine_z = [{name = "location";}];
+        };
+      };
     };
+    extraConfigLua = ''
+      vim.keymap.set("n", "<leader>g", "<cmd>Neogit<cr>")
+    '';
 
     extraPlugins = with pkgs.vimPlugins; [
       vim-visual-multi
