@@ -14,6 +14,7 @@
 
     oil.enable = true;
     neogit.enable = true;
+    diffview.enable = true;
     gitsigns.enable = true;
     vimtex.enable = true;
 
