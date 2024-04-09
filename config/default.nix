@@ -22,7 +22,7 @@
       formattersByFt = {
         lua = ["stylua"];
         nix = ["alejandra"];
-        python = ["isort" "ruff"];
+        python = ["isort" "ruff_format"];
         "*" = ["trim_whitespace"];
       };
     };
