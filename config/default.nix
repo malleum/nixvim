@@ -11,6 +11,7 @@
     treesitter.enable = true;
     undotree.enable = true;
     comment.enable = true;
+    vim-css-color.enable = true;
 
     oil.enable = true;
     neogit.enable = true;
