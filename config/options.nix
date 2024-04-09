@@ -12,7 +12,7 @@
     expandtab = true;
     hidden = true;
     history = 50;
-    hlsearch = false;
+    hlsearch = true;
     ignorecase = true;
     incsearch = true;
     mouse = "";
@@ -127,6 +127,11 @@
       action = "y$";
     }
     {
+      mode = ["n"];
+      key = "<Esc>";
+      action = "<cmd>nohlsearch<CR><Esc>";
+    }
+    {
       mode = ["c"];
       key = "W";
       action = "w";
@@ -134,7 +139,17 @@
     {
       mode = ["n"];
       key = "-";
-      action = ":Oil<cr>";
+      action = "<cmd>Oil<cr>";
+    }
+    {
+      mode = "t";
+      key = "<C-\\><C-\\>";
+      action = "<C-\\><C-n>";
+    }
+    {
+      mode = "n";
+      key = "<C-cr>";
+      action = "<cmd>term<cr>";
     }
   ];
 }

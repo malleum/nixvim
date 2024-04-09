@@ -1,12 +1,13 @@
 {
     plugins = {
       telescope = {
+        enable = true;
         extensions = {
           fzf-native = {
             enable = true;
           };
         };
-        defaults = {
+        settings.defaults = {
           layout_config = {
             horizontal = {
               prompt_position = "top";
@@ -15,7 +16,6 @@
             };
           };
         };
-        enable = true;
         keymaps = {
           "<leader>h" = "find_files";
           "<leader>pp" = "find_files";
