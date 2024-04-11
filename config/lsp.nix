@@ -53,6 +53,7 @@
       ];
     };
     cmp-nvim-lsp.enable = true; # lsp
+    cmp-calc.enable = true;
     cmp-buffer.enable = true;
     cmp-path.enable = true; # file system paths
     cmp_luasnip.enable = true; # snippets
@@ -81,6 +82,7 @@
           {name = "nvim_lua";}
           {name = "path";}
           {name = "buffer";}
+          {name = "calc";}
         ];
         mapping = {
           "<CR>" = "cmp.mapping.confirm({ select = true })";
