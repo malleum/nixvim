@@ -38,8 +38,10 @@
 
   colorschemes.tokyonight = {
     enable = true;
-    style = "night";
-    transparent = true;
+    settings = {
+      style = "night";
+      transparent = true;
+    };
   };
 
   globals = {
