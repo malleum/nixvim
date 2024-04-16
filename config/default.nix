@@ -12,11 +12,12 @@
     undotree.enable = true;
     comment.enable = true;
     ccc.enable = true;
+    todo-comments.enable = true;
 
-    oil.enable = true;
-    neogit.enable = true;
     diffview.enable = true;
     gitsigns.enable = true;
+    neogit.enable = true;
+    oil.enable = true;
     vimtex.enable = true;
 
     conform-nvim = {
@@ -63,5 +64,6 @@
   extraPlugins = with pkgs.vimPlugins; [
     vim-visual-multi
     vim-indent-object
+    pkgs.ruff
   ];
 }
