@@ -1,4 +1,9 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  ruff = "${pkgs.ruff}/bin/ruff";
+  stylua = "${pkgs.stylua}/bin/stylua";
+  alejandra = "${pkgs.alejandra}/bin/alejandra";
+  isort = "${pkgs.isort}/bin/isort";
+in {
   imports = [
     ./options.nix
     ./lsp.nix
@@ -6,22 +11,32 @@
   ];
 
   plugins = {
-    nvim-autopairs.enable = true;
-    surround.enable = true;
-    treesitter.enable = true;
-    undotree.enable = true;
-    comment.enable = true;
     ccc.enable = true;
-    todo-comments.enable = true;
-
+    comment.enable = true;
     diffview.enable = true;
     gitsigns.enable = true;
     neogit.enable = true;
+    nvim-autopairs.enable = true;
     oil.enable = true;
+    quickmath.enable = true;
+    specs.enable = true;
+    surround.enable = true;
+    todo-comments.enable = true;
+    treesitter.enable = true;
+    undotree.enable = true;
     vimtex.enable = true;
 
     conform-nvim = {
       enable = true;
+      formatters = {
+        ruff_format = {
+          command = ruff;
+          prepend_args = ["format"];
+        };
+        stylua.command = stylua;
+        alejandra.command = alejandra;
+        isort.command = isort;
+      };
       formattersByFt = {
         lua = ["stylua"];
         nix = ["alejandra"];
@@ -29,6 +44,7 @@
         "*" = ["trim_whitespace"];
       };
     };
+
     lint = {
       enable = true;
       lintersByFt = {
@@ -43,11 +59,12 @@
         lualine_b = [{name = "branch";} {name = "diff";} {name = "diagnostics";}];
         lualine_c = [{name = "filename";}];
         lualine_x = [{name = "selectioncount";} {name = "filetype";}];
-        lualine_y = [{name = "encoding";} {name = "fileformat";}];
+        lualine_y = [{name = "encoding";} {name = "filexxformat";}];
         lualine_z = [{name = "location";}];
       };
     };
   };
+
   keymaps = [
     {
       mode = "n";
@@ -64,6 +81,5 @@
   extraPlugins = with pkgs.vimPlugins; [
     vim-visual-multi
     vim-indent-object
-    pkgs.ruff
   ];
 }
