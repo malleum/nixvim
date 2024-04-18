@@ -47,6 +47,7 @@ in {
 
     lint = {
       enable = true;
+      linters.ruff.cmd = ruff;
       lintersByFt = {
         python = ["ruff"];
       };
