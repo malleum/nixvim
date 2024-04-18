@@ -61,9 +61,6 @@
     cmp-cmdline.enable = true; # autocomplete for cmdlinep
     lspkind = {
       enable = true;
-      symbolMap = {
-        Copilot = "";
-      };
       extraOptions = {
         maxwidth = 50;
         ellipsis_char = "...";
@@ -73,29 +70,30 @@
       enable = true;
       settings = {
         autoEnableSources = true;
-        snippet = {expand = "luasnip";};
-        experimental = {ghost_text = true;};
-        formatting = {fields = ["kind" "abbr" "menu"];};
+        snippet.expand = "luasnip";
+        experimental.ghost_text = true;
+        preselect = "cmp.PreselectMode.Item";
+        formatting.fields = ["kind" "abbr" "menu"];
 
         sources = [
           {name = "nvim_lsp";}
           {name = "luasnip";}
           {name = "nvim_lua";}
+          {name = "calc";}
           {name = "path";}
           {name = "buffer";}
-          {name = "calc";}
         ];
         mapping = {
           "<CR>" = "cmp.mapping.confirm({ select = true })";
-          "<C-n>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
-          "<C-p>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
+          "<C-p>" = "cmp.mapping(function() if cmp.visible() then cmp.select_prev_item({behavior = 'insert'}) else cmp.complete() end end)";
+          "<C-n>" = "cmp.mapping(function() if cmp.visible() then cmp.select_next_item({behavior = 'insert'}) else cmp.complete() end end)";
         };
         window = {
           completion = {
             border = "rounded";
             winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None";
           };
-          documentation = {border = "rounded";};
+          documentation.border = "rounded";
         };
       };
     };
