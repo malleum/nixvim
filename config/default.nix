@@ -19,12 +19,18 @@ in {
     nvim-autopairs.enable = true;
     oil.enable = true;
     quickmath.enable = true;
-    specs.enable = true;
     surround.enable = true;
     todo-comments.enable = true;
     treesitter.enable = true;
     undotree.enable = true;
     vimtex.enable = true;
+
+    specs = {
+      enable = true;
+      min_jump = 25;
+      fader.builtin = "pulse_fader";
+      color = "#e6e6e6";
+    };
 
     conform-nvim = {
       enable = true;
