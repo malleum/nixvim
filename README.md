@@ -17,6 +17,12 @@ nix run .
 nix run github:speedster33/nixvim --experimental-features 'nix-command flakes'
 ```
 
+## Running minvim
+```
+nix run github:speedster33/nixvim#minvim --experimental-features 'nix-command flakes'
+```
+
+
 #### TODO
 - [x] lsp issues
     - [x] <C-n>/<C-p> for lsp conmpletion

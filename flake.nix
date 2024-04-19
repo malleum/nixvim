@@ -30,18 +30,30 @@
           inherit pkgs;
           module = import ./config;
         };
+        minvim = nixvim'.makeNixvimWithModule {
+          inherit pkgs;
+          module = import ./config/minvim.nix;
+        };
       in {
         checks = {
-          # Run `nix flake check .` to verify that your config is not broken 
+          # Run `nix flake check .` to verify that your config is not broken
           default = nixvimLib.check.mkTestDerivationFromNvim {
             inherit nvim;
             name = "malleus nixvim config";
           };
+          # Run `nix flake check minvim` to verify that your config is not broken
+          minvim = nixvimLib.check.mkTestDerivationFromNvim {
+            inherit minvim;
+            name = "malleus minimus nixvim config";
+          };
+
         };
 
         packages = {
           # Lets you run `nix run .` to start nixvim
           default = nvim;
+          # Lets you run `nix run minvim` to start nixvim
+          minvim = minvim;
         };
       };
     };

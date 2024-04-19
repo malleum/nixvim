@@ -7,7 +7,7 @@
   ];
 
   config = {
-    lsps.enable = true;
-    vimtex.enable = true;
+    lsps.enable = false;
+    vimtex.enable = false;
   };
 }
