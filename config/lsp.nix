@@ -14,17 +14,28 @@
       lsp = {
         enable = true;
         servers = lib.mkIf config.lsps.enable {
+          bashls.enable = true;
           clangd.enable = true;
           dartls.enable = true;
+          gleam.enable = true;
           gopls.enable = true;
           html.enable = true;
           htmx.enable = true;
+          java-language-server.enable = true;
           jsonls.enable = true;
           kotlin-language-server.enable = true;
           lua-ls.enable = true;
-          nixd.enable = true;
+          marksman.enable = true;
           nil_ls.enable = true;
+          nixd.enable = true;
           pyright.enable = true;
+          rust-analyzer = {
+            enable = true;
+            installRustc = true;
+            installCargo = true;
+          };
+          tsserver.enable = true;
+          vhdl-ls.enable = true;
         };
         keymaps = {
           diagnostic = {
