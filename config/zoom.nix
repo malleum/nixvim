@@ -41,7 +41,10 @@
     flash = {
       enable = true;
       label.rainbow.enabled = true;
-      modes.search.enabled = false;
+      modes = {
+        search.enabled = false;
+        char.enabled = false;
+      };
     };
   };
 
