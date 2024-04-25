@@ -37,7 +37,7 @@
   };
 
   luaLoader.enable = true;
-  viAlias.enable = true;
+  viAlias = true;
 
   colorschemes.tokyonight = {
     enable = true;
