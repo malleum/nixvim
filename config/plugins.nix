@@ -9,9 +9,7 @@
   alejandra = "${pkgs.alejandra}/bin/alejandra";
   isort = "${pkgs.isort}/bin/isort";
 in {
-  options = {
-    vimtex.enable = lib.mkEnableOption "Enable latex plugin";
-  };
+  options.vimtex.enable = lib.mkEnableOption "Enable latex plugin";
 
   config = {
     plugins = {
@@ -58,9 +56,7 @@ in {
       lint = {
         enable = true;
         linters.ruff.cmd = ruff;
-        lintersByFt = {
-          python = ["ruff"];
-        };
+        lintersByFt.python = ["ruff"];
       };
 
       lualine = {

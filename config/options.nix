@@ -36,6 +36,9 @@
     writebackup = false;
   };
 
+  luaLoader.enable = true;
+  viAlias.enable = true;
+
   colorschemes.tokyonight = {
     enable = true;
     settings = {

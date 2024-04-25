@@ -4,9 +4,7 @@
   lib,
   ...
 }: {
-  options = {
-    lsps.enable = lib.mkEnableOption "lsps";
-  };
+  options.lsps.enable = lib.mkEnableOption "lsps";
 
   config = {
     plugins = {
