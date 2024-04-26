@@ -147,6 +147,16 @@
       action = "<cmd>Oil<cr>";
     }
     {
+      mode = ["n"];
+      key = "<C-j>";
+      action = "<cmd>cn<cr>";
+    }
+    {
+      mode = ["n"];
+      key = "<C-k>";
+      action = "<cmd>cp<cr>";
+    }
+    {
       mode = "t";
       key = "<C-\\><C-\\>";
       action = "<C-\\><C-n>";

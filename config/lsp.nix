@@ -10,8 +10,8 @@
     plugins = {
       fidget.enable = true;
       lsp = {
-        enable = true;
-        servers = lib.mkIf config.lsps.enable {
+        enable = config.lsps.enable;
+        servers = {
           bashls.enable = true;
           clangd.enable = true;
           dartls.enable = true;
