@@ -33,8 +33,8 @@
             installCargo = true;
           };
           tsserver.enable = true;
+          volar.enable = true;
           vhdl-ls.enable = true;
-          vuels.enable = true;
         };
         keymaps = {
           diagnostic = {
