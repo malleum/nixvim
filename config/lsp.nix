@@ -34,6 +34,7 @@
           };
           tsserver.enable = true;
           vhdl-ls.enable = true;
+          vuels.enable = true;
         };
         keymaps = {
           diagnostic = {
