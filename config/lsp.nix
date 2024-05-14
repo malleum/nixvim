@@ -10,8 +10,8 @@
     plugins = {
       fidget.enable = true;
       lsp = {
-        enable = config.lsps.enable;
-        servers = {
+        enable = true;
+        servers = lib.mkIf config.lsps.enable {
           bashls.enable = true;
           clangd.enable = true;
           dartls.enable = true;
@@ -33,7 +33,6 @@
             installCargo = true;
           };
           tsserver.enable = true;
-          volar.enable = true;
           vhdl-ls.enable = true;
         };
         keymaps = {
