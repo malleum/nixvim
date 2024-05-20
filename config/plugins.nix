@@ -27,13 +27,6 @@ in {
       undotree.enable = true;
       vimtex.enable = config.vimtex.enable;
 
-      specs = {
-        enable = true;
-        min_jump = 25;
-        fader.builtin = "pulse_fader";
-        color = "#e6e6e6";
-      };
-
       conform-nvim = {
         enable = true;
         formatters = {
