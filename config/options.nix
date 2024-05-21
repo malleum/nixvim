@@ -1,18 +1,9 @@
 {
   opts = {
-    autoindent = true;
-    autoread = true;
-    autowrite = true;
-    backup = false;
-    cmdheight = 1;
     completeopt = ["menuone" "noselect" "noinsert"];
     cursorcolumn = true;
     cursorline = true;
-    encoding = "utf-8";
     expandtab = true;
-    hidden = true;
-    history = 50;
-    hlsearch = true;
     ignorecase = true;
     incsearch = true;
     mouse = "";
@@ -24,14 +15,12 @@
     showmode = false;
     signcolumn = "yes";
     smartcase = true;
-    smarttab = true;
     softtabstop = 4;
     swapfile = false;
     tabstop = 4;
     termguicolors = true;
     undofile = true;
     updatetime = 50;
-    wildmenu = true;
     wrap = false;
     writebackup = false;
   };
