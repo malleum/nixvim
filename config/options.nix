@@ -51,6 +51,13 @@
       options.silent = true;
     }
     {
+      mode = ["n"];
+      key = "<S-cr>";
+      action = "<Nop>";
+      options.silent = true;
+    }
+
+    {
       mode = ["n" "v"];
       key = "<leader>Y";
       action = "\"+y$";
