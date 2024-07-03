@@ -54,6 +54,14 @@ in {
 
       lualine = {
         enable = true;
+        sectionSeparators = {
+          left = "";
+          right = "";
+        };
+        componentSeparators = {
+          left = "";
+          right = "";
+        };
         sections = {
           lualine_a = [{name = "mode";}];
           lualine_b = [{name = "branch";} {name = "diff";} {name = "diagnostics";}];
