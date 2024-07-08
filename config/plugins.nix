@@ -62,7 +62,7 @@ in {
           left = "";
           right = "";
         };
-        sections = {
+       sections = {
           lualine_a = [{name = "mode";}];
           lualine_b = [{name = "branch";} {name = "diff";} {name = "diagnostics";}];
           lualine_c = [{name = "filename";}];
