@@ -55,12 +55,12 @@ in {
       lualine = {
         enable = true;
         sectionSeparators = {
-          left = "";
-          right = "";
+          left = "";
+          right = "";
         };
         componentSeparators = {
-          left = "";
-          right = "";
+          left = "\\";
+          right = "/";
         };
        sections = {
           lualine_a = [{name = "mode";}];
