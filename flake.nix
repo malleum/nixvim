@@ -46,7 +46,6 @@
             m = minimus;
             name = "malleus minimus nixvim config";
           };
-
         };
 
         packages = {
@@ -54,6 +53,8 @@
           default = nvim;
           # Lets you run `nix run m` to start nixvim
           m = minimus;
+
+          module = import ./config;
         };
       };
     };
