@@ -23,7 +23,13 @@ in {
       quickmath.enable = true;
       surround.enable = true;
       todo-comments.enable = true;
-      treesitter.enable = true;
+      treesitter = {
+        enable = true;
+        settings = {
+          auto_install = true;
+          highlight.enable = true;
+        };
+      };
       undotree.enable = true;
       vimtex.enable = config.vimtex.enable;
 
@@ -62,7 +68,7 @@ in {
           left = "\\";
           right = "/";
         };
-       sections = {
+        sections = {
           lualine_a = [{name = "mode";}];
           lualine_b = [{name = "branch";} {name = "diff";} {name = "diagnostics";}];
           lualine_c = [{name = "filename";}];
