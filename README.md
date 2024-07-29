@@ -17,9 +17,9 @@ nix run .
 nix run github:speedster33/nixvim --experimental-features 'nix-command flakes'
 ```
 
-## Running minvim
+## Running minimus vim
 ```
-nix run github:speedster33/nixvim#minvim --experimental-features 'nix-command flakes'
+nix run github:speedster33/nixvim#m --experimental-features 'nix-command flakes'
 ```
 
 
@@ -37,4 +37,4 @@ nix run github:speedster33/nixvim#minvim --experimental-features 'nix-command fl
 - [x] update configs
     - [x] telescope config
     - [x] lualine config
-- [ ] seperate options into seperate config
+- [x] seperate options into seperate config
