@@ -24,6 +24,7 @@
     wrap = false;
     writebackup = false;
   };
+        
 
   luaLoader.enable = true;
   viAlias = true;

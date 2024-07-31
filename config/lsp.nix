@@ -35,6 +35,7 @@
           tsserver.enable = true;
           vhdl-ls.enable = true;
         };
+        inlayHints = true;
         keymaps = {
           diagnostic = {
             "[d" = "goto_prev";
@@ -55,9 +56,7 @@
             "<leader>rr" = "references";
           };
         };
-        onAttach = ''
-          vim.keymap.set("n", "<leader>f", function() require("conform").format({ async = true, lsp_fallback = true }) end)
-        '';
+        onAttach = '' vim.keymap.set("n", "<leader>f", function() require("conform").format({ async = true, lsp_fallback = true }) end) '';
       };
       luasnip = {
         enable = true;
