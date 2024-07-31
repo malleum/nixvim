@@ -24,10 +24,13 @@
     wrap = false;
     writebackup = false;
   };
-        
 
-  luaLoader.enable = true;
   viAlias = true;
+  luaLoader.enable = true;
+  performance.combinePlugins = {
+    enable = true;
+    standalonePlugins = ["oil.nvim"];
+  };
 
   colorschemes.tokyonight = {
     enable = true;
