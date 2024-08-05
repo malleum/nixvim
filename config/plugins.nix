@@ -14,15 +14,19 @@ in {
   config = {
     plugins = {
       ccc.enable = true;
+      oil.enable = true;
+      neogit.enable = true;
       comment.enable = true;
       diffview.enable = true;
       gitsigns.enable = true;
-      neogit.enable = true;
-      nvim-autopairs.enable = true;
-      oil.enable = true;
-      quickmath.enable = true;
       surround.enable = true;
+      undotree.enable = true;
+      quickmath.enable = true;
       todo-comments.enable = true;
+      nvim-autopairs.enable = true;
+      markdown-preview.enable = true;
+      vimtex.enable = config.vimtex.enable;
+
       treesitter = {
         enable = true;
         settings = {
@@ -30,8 +34,6 @@ in {
           highlight.enable = true;
         };
       };
-      undotree.enable = true;
-      vimtex.enable = config.vimtex.enable;
 
       conform-nvim = {
         enable = true;
@@ -93,9 +95,7 @@ in {
     ];
 
     extraConfigLua = ''
-      require('btw').setup({
-        text = "I use neovim (btw)",
-      })
+      require('btw').setup({ text = "I use neovim (btw)" })
     '';
 
     extraPlugins = with pkgs.vimPlugins; [
