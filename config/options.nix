@@ -7,7 +7,7 @@
     ignorecase = true;
     incsearch = true;
     mouse = "";
-    nu = true;
+    number = true;
     relativenumber = true;
     ruler = false;
     scrolloff = 7;
@@ -157,12 +157,12 @@
       action = "<cmd>cp<cr>";
     }
     {
-      mode = "t";
+      mode = ["t"];
       key = "<C-\\><C-\\>";
       action = "<C-\\><C-n>";
     }
     {
-      mode = "n";
+      mode = ["n"];
       key = "<C-cr>";
       action = "<cmd>term<cr>";
     }
