@@ -33,7 +33,6 @@
             installCargo = true;
           };
           tsserver.enable = true;
-          vhdl-ls.enable = true;
         };
         inlayHints = true;
         keymaps = {
