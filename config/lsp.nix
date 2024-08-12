@@ -55,7 +55,7 @@
             "<leader>rr" = "references";
           };
         };
-        onAttach = '' vim.keymap.set("n", "<leader>f", function() require("conform").format({ async = true, lsp_fallback = true }) end) '';
+        onAttach = ''vim.keymap.set("n", "<leader>f", function() require("conform").format({ async = true, lsp_fallback = true }) end) '';
       };
       luasnip = {
         enable = true;
