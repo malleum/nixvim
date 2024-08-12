@@ -14,12 +14,12 @@ nix run .
 
 ## Running
 ```
-nix run github:speedster33/nixvim --experimental-features 'nix-command flakes'
+nix run github:malleum/nixvim --experimental-features 'nix-command flakes'
 ```
 
 ## Running minimus vim
 ```
-nix run github:speedster33/nixvim#m --experimental-features 'nix-command flakes'
+nix run github:malleum/nixvim#m --experimental-features 'nix-command flakes'
 ```
 
 
