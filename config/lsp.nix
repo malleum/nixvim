@@ -13,6 +13,7 @@
         enable = true;
         servers = lib.mkIf config.lsps.enable {
           bashls.enable = true;
+          cssls.enable = true;
           clangd.enable = true;
           dartls.enable = true;
           gleam.enable = true;
