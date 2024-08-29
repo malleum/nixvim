@@ -37,22 +37,20 @@ in {
 
       conform-nvim = {
         enable = true;
-        settings = {
-          formatters = {
-            ruff_format = {
-              command = ruff;
-              prepend_args = ["format"];
-            };
-            stylua.command = stylua;
-            alejandra.command = alejandra;
-            isort.command = isort;
+        formatters = {
+          ruff_format = {
+            command = ruff;
+            prepend_args = ["format"];
           };
-          formattersByFt = {
-            lua = ["stylua"];
-            nix = ["alejandra"];
-            python = ["isort" "ruff_format"];
-            "*" = ["trim_whitespace"];
-          };
+          stylua.command = stylua;
+          alejandra.command = alejandra;
+          isort.command = isort;
+        };
+        formattersByFt = {
+          lua = ["stylua"];
+          nix = ["alejandra"];
+          python = ["isort" "ruff_format"];
+          "*" = ["trim_whitespace"];
         };
       };
 
