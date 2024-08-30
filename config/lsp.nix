@@ -34,6 +34,7 @@
             installCargo = true;
           };
           tsserver.enable = true;
+          zls.enable = true;
         };
         inlayHints = true;
         keymaps = {
