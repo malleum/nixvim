@@ -27,6 +27,7 @@
           marksman.enable = true;
           nil-ls.enable = true;
           nixd.enable = true;
+          sqls.enable = true;
           pyright.enable = true;
           rust-analyzer = {
             enable = true;
