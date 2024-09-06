@@ -22,13 +22,14 @@
           htmx.enable = true;
           java-language-server.enable = true;
           jsonls.enable = true;
-          kotlin-language-server.enable = true;
           lua-ls.enable = true;
+          kotlin-language-server.enable = true;
           marksman.enable = true;
           nil-ls.enable = true;
           nixd.enable = true;
-          sqls.enable = true;
+          ocamllsp.enable = true;
           pyright.enable = true;
+          sqls.enable = true;
           rust-analyzer = {
             enable = true;
             installRustc = true;
