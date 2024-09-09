@@ -64,21 +64,25 @@ in {
 
       lualine = {
         enable = true;
-        sectionSeparators = {
-          left = "";
-          right = "";
-        };
-        componentSeparators = {
-          left = "\\";
-          right = "/";
-        };
-        sections = {
-          lualine_a = [{name = "mode";}];
-          lualine_b = [{name = "branch";} {name = "diff";} {name = "diagnostics";}];
-          lualine_c = [{name = "filename";}];
-          lualine_x = [{name = "selectioncount";} {name = "filetype";}];
-          lualine_y = [{name = "encoding";} {name = "filexxformat";}];
-          lualine_z = [{name = "location";}];
+        settings = {
+          options = {
+            section_separators = {
+              left = "";
+              right = "";
+            };
+            component_separators = {
+              left = "\\";
+              right = "/";
+            };
+          };
+          sections = {
+            lualine_a = ["mode"];
+            lualine_b = ["branch" "diff" "diagnostics"];
+            lualine_c = ["filename"];
+            lualine_x = ["selectioncount" "filetype"];
+            lualine_y = ["encoding" "filexxformat"];
+            lualine_z = ["location"];
+          };
         };
       };
     };
