@@ -51,6 +51,11 @@
   keymaps = [
     {
       mode = ["n"];
+      key = "<leader>pt";
+      action = "<cmd>TodoTelescope<cr>";
+    }
+    {
+      mode = ["n"];
       key = "<leader>pS";
       action = "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input({ prompt = ' > ' }) })<cr>";
     }

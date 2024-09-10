@@ -21,20 +21,3 @@ nix run github:malleum/nixvim --experimental-features 'nix-command flakes'
 ```
 nix run github:malleum/nixvim#m --experimental-features 'nix-command flakes'
 ```
-
-
-#### TODO
-- [x] lsp issues
-    - [x] <C-n>/<C-p> for lsp conmpletion
-    - [x] lsp kemaps syntax update
-    - [x] dart lsp
-    - [x] hover border
-    - [x] fix snippets
-- [x] new plugins
-    - [x] neogit
-    - [x] latex
-    - [x] flash
-- [x] update configs
-    - [x] telescope config
-    - [x] lualine config
-- [x] seperate options into seperate config
