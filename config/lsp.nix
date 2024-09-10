@@ -22,6 +22,7 @@
           htmx.enable = true;
           java-language-server.enable = true;
           jsonls.enable = true;
+          ltex.enable = true;
           lua-ls.enable = true;
           kotlin-language-server.enable = true;
           marksman.enable = true;
