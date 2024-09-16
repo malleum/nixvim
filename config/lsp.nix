@@ -36,7 +36,7 @@
             installRustc = true;
             installCargo = true;
           };
-          tsserver.enable = true;
+          ts-ls.enable = true;
           zls.enable = true;
         };
         inlayHints = true;
