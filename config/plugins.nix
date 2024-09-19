@@ -19,7 +19,7 @@ in {
       comment.enable = true;
       diffview.enable = true;
       gitsigns.enable = true;
-      surround.enable = true;
+      nvim-surround.enable = true;
       undotree.enable = true;
       quickmath.enable = true;
       todo-comments.enable = true;
