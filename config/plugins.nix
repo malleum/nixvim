@@ -26,6 +26,7 @@ in {
       nvim-autopairs.enable = true;
       markdown-preview.enable = true;
       vimtex.enable = config.vimtex.enable;
+      web-devicons.enable = true;
 
       treesitter = {
         enable = true;
