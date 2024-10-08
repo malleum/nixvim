@@ -25,8 +25,16 @@ in {
       todo-comments.enable = true;
       nvim-autopairs.enable = true;
       markdown-preview.enable = true;
-      vimtex.enable = config.vimtex.enable;
       web-devicons.enable = true;
+
+      vimtex = {
+        enable = config.vimtex.enable;
+        texlivePackage = pkgs.texlive.combined.scheme-full;
+        settings = {
+          compiler_method = "latexmk";
+          view_method = "zathura";
+        };
+      };
 
       treesitter = {
         enable = true;
@@ -103,11 +111,15 @@ in {
 
     extraConfigLua = ''
       require('btw').setup({ text = "I use neovim (btw)" })
+
+      require('dbee').install("go")
+      require('dbee').setup()
     '';
 
     extraPlugins = with pkgs.vimPlugins; [
       vim-visual-multi
       vim-indent-object
+      nvim-dbee
       (pkgs.vimUtils.buildVimPlugin {
         pname = "btw.nvim";
         version = "2024-04-36";
