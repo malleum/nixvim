@@ -112,10 +112,9 @@ in {
     extraConfigLua = ''
       require('btw').setup({ text = "I use neovim (btw)" })
 
-      require('dbee').install("go")
       require('dbee').setup()
 
-      require('typst-preview').update()
+      require('typst-preview').setup()
     '';
 
     extraPlugins = with pkgs.vimPlugins; [
