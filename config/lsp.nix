@@ -20,23 +20,24 @@
           gopls.enable = true;
           html.enable = true;
           htmx.enable = true;
-          java-language-server.enable = true;
+          java_language_server.enable = true;
           jsonls.enable = true;
-          kotlin-language-server.enable = true;
+          kotlin_language_server.enable = true;
           ltex.enable = true;
-          lua-ls.enable = true;
+          lua_ls.enable = true;
           marksman.enable = true;
-          nil-ls.enable = true;
+          nil_ls.enable = true;
           nixd.enable = true;
           ocamllsp.enable = true;
           pyright.enable = true;
           sqls.enable = true;
-          rust-analyzer = {
+          rust_analyzer = {
             enable = true;
             installRustc = true;
             installCargo = true;
           };
-          ts-ls.enable = true;
+          ts_ls.enable = true;
+          typst_lsp.enable = true;
           zls.enable = true;
         };
         inlayHints = true;

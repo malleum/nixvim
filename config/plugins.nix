@@ -114,6 +114,8 @@ in {
 
       require('dbee').install("go")
       require('dbee').setup()
+
+      require('typst-preview').update()
     '';
 
     extraPlugins = with pkgs.vimPlugins; [
@@ -128,6 +130,16 @@ in {
           repo = "btw.nvim";
           rev = "47f6419e90d3383987fd06e8f3e06a4bc032ac83";
           hash = "sha256-91DZUfa4FBvXnkcNHdllr82Dr1Ie+MGVD3ibwkqo04c=";
+        };
+      })
+      (pkgs.vimUtils.buildVimPlugin {
+        pname = "typst-preview.nvim";
+        version = "0.3.3";
+        src = pkgs.fetchFromGitHub {
+          owner = "chomosuke";
+          repo = "typst-preview.nvim";
+          rev = "0354cc1a7a5174a2e69cdc21c4db9a3ee18bb20a";
+          hash = "sha256-n0TfcXJLlRXdS6S9dwYHN688IipVSDLVXEqyYs+ROG8=";
         };
       })
     ];
