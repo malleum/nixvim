@@ -26,9 +26,12 @@
           ltex.enable = true;
           lua_ls.enable = true;
           marksman.enable = true;
+          millet = {
+            enable = true;
+            package = pkgs.millet;
+          };
           nil_ls.enable = true;
           nixd.enable = true;
-          ocamllsp.enable = true;
           pyright.enable = true;
           sqls.enable = true;
           rust_analyzer = {
