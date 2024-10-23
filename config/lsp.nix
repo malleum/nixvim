@@ -40,7 +40,7 @@
             installCargo = true;
           };
           ts_ls.enable = true;
-          typst_lsp.enable = true;
+          # typst_lsp.enable = true;
           zls.enable = true;
         };
         inlayHints = true;
