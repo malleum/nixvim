@@ -7,19 +7,16 @@
   options.lsps.enable = lib.mkEnableOption "lsps";
 
   config = {
-    plugins = {
+    plugins = lib.mkIf config.lsps.enable {
       fidget.enable = true;
       lsp = {
         enable = true;
-        servers = lib.mkIf config.lsps.enable {
+        servers = {
           bashls.enable = true;
           cssls.enable = true;
           clangd.enable = true;
-          dartls.enable = true;
-          gleam.enable = true;
           gopls.enable = true;
           html.enable = true;
-          htmx.enable = true;
           java_language_server.enable = true;
           jsonls.enable = true;
           kotlin_language_server.enable = true;
@@ -30,7 +27,6 @@
             enable = true;
             package = pkgs.millet;
           };
-          nil_ls.enable = true;
           nixd.enable = true;
           pyright.enable = true;
           sqls.enable = true;
@@ -40,7 +36,6 @@
             installCargo = true;
           };
           ts_ls.enable = true;
-          # typst_lsp.enable = true;
           zls.enable = true;
         };
         inlayHints = true;
@@ -84,7 +79,6 @@
       cmp-buffer.enable = true;
       cmp-path.enable = true; # file system paths
       cmp_luasnip.enable = true; # snippets
-      cmp-cmdline.enable = true; # autocomplete for cmdlinep
       lspkind = {
         enable = true;
         extraOptions = {

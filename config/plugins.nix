@@ -13,19 +13,17 @@ in {
 
   config = {
     plugins = {
-      ccc.enable = true;
       oil.enable = true;
       neogit.enable = true;
       comment.enable = true;
       diffview.enable = true;
       gitsigns.enable = true;
-      nvim-surround.enable = true;
       undotree.enable = true;
-      quickmath.enable = true;
+      web-devicons.enable = true;
+      nvim-surround.enable = true;
       todo-comments.enable = true;
       nvim-autopairs.enable = true;
       markdown-preview.enable = true;
-      web-devicons.enable = true;
 
       vimtex = {
         enable = config.vimtex.enable;
