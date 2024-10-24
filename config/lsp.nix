@@ -6,15 +6,15 @@
 }: {
   options.lsps.enable = lib.mkEnableOption "lsps";
 
-  config = {
-    plugins = lib.mkIf config.lsps.enable {
+  config = lib.mkIf config.lsps.enable {
+    plugins = {
       fidget.enable = true;
       lsp = {
         enable = true;
         servers = {
           bashls.enable = true;
-          cssls.enable = true;
           clangd.enable = true;
+          cssls.enable = true;
           gopls.enable = true;
           html.enable = true;
           java_language_server.enable = true;
@@ -29,13 +29,14 @@
           };
           nixd.enable = true;
           pyright.enable = true;
-          sqls.enable = true;
           rust_analyzer = {
             enable = true;
             installRustc = true;
             installCargo = true;
           };
+          sqls.enable = true;
           ts_ls.enable = true;
+          typst_lsp.enable = true;
           zls.enable = true;
         };
         inlayHints = true;

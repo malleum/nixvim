@@ -107,36 +107,17 @@ in {
       }
     ];
 
-    extraConfigLua = ''
-      require('btw').setup({ text = "I use neovim (btw)" })
-
-      require('dbee').setup()
-
-      require('typst-preview').setup()
-    '';
-
     extraPlugins = with pkgs.vimPlugins; [
       vim-visual-multi
       vim-indent-object
-      nvim-dbee
-      (pkgs.vimUtils.buildVimPlugin {
-        pname = "btw.nvim";
-        version = "2024-04-36";
-        src = pkgs.fetchFromGitHub {
-          owner = "letieu";
-          repo = "btw.nvim";
-          rev = "47f6419e90d3383987fd06e8f3e06a4bc032ac83";
-          hash = "sha256-91DZUfa4FBvXnkcNHdllr82Dr1Ie+MGVD3ibwkqo04c=";
-        };
-      })
       (pkgs.vimUtils.buildVimPlugin {
         pname = "typst-preview.nvim";
-        version = "0.3.3";
+        version = "1.1.0";
         src = pkgs.fetchFromGitHub {
           owner = "chomosuke";
           repo = "typst-preview.nvim";
-          rev = "0354cc1a7a5174a2e69cdc21c4db9a3ee18bb20a";
-          hash = "sha256-n0TfcXJLlRXdS6S9dwYHN688IipVSDLVXEqyYs+ROG8=";
+          rev = "06778d1b3d4d29c34f1faf80947b586f403689ba";
+          hash = "sha256-oBJ+G4jTQw6+MF/SMwaTkGlLQuYLbaAFqJkexf45I1g=";
         };
       })
     ];
