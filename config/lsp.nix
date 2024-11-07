@@ -42,6 +42,7 @@
           tinymist = {
             enable = true;
             extraOptions.offset_encoding = "utf-8";
+            settings.exportPdf = "onSave";
           };
           zls.enable = true;
         };
