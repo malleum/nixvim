@@ -27,7 +27,10 @@
             enable = true;
             package = pkgs.millet;
           };
-          nixd.enable = true;
+          nixd = {
+            enable = true;
+            extraOptions.offset_encoding = "utf-8";
+          };
           pyright.enable = true;
           rust_analyzer = {
             enable = true;
@@ -36,7 +39,10 @@
           };
           sqls.enable = true;
           ts_ls.enable = true;
-          tinymist.enable = true;
+          tinymist = {
+            enable = true;
+            extraOptions.offset_encoding = "utf-8";
+          };
           zls.enable = true;
         };
         inlayHints = true;
