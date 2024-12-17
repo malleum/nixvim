@@ -35,11 +35,11 @@
         nixvim' = nixvim.legacyPackages.${system};
         nvim = nixvim'.makeNixvimWithModule {
           inherit pkgs;
-          module = import ./config;
+          module = import ./config/default.nix {omnis = true;};
         };
         minimus = nixvim'.makeNixvimWithModule {
           inherit pkgs;
-          module = import ./config/minimus.nix;
+          module = import ./config/default.nix {omnis = true;};
         };
       in {
         checks = {

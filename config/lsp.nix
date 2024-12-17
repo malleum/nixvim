@@ -19,14 +19,9 @@
           html.enable = true;
           java_language_server.enable = true;
           jsonls.enable = true;
-          kotlin_language_server.enable = true;
           ltex.enable = true;
           lua_ls.enable = true;
           marksman.enable = true;
-          millet = {
-            enable = true;
-            package = pkgs.millet;
-          };
           nixd = {
             enable = true;
             extraOptions.offset_encoding = "utf-8";

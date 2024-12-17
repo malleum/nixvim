@@ -9,8 +9,6 @@
   alejandra = "${pkgs.alejandra}/bin/alejandra";
   isort = "${pkgs.isort}/bin/isort";
 in {
-  options.vimtex.enable = lib.mkEnableOption "Enable latex plugin";
-
   config = {
     plugins = {
       oil.enable = true;
@@ -18,26 +16,16 @@ in {
       comment.enable = true;
       diffview.enable = true;
       gitsigns.enable = true;
-      undotree.enable = true;
       web-devicons.enable = true;
       nvim-surround.enable = true;
       todo-comments.enable = true;
       nvim-autopairs.enable = true;
-      markdown-preview.enable = true;
 
-      vimtex = {
-        enable = config.vimtex.enable;
-        texlivePackage = pkgs.texlive.combined.scheme-full;
-        settings = {
-          compiler_method = "latexmk";
-          view_method = "zathura";
-        };
-      };
-
-      treesitter = {
+      treesitter = lib.mkIf config.lsps.enable {
         enable = true;
         settings = {
           auto_install = true;
+          indent.enable = true;
           highlight.enable = true;
         };
       };
@@ -117,12 +105,12 @@ in {
       vim-indent-object
       (pkgs.vimUtils.buildVimPlugin {
         pname = "typst-preview.nvim";
-        version = "1.1.0";
+        version = "1.2.1";
         src = pkgs.fetchFromGitHub {
           owner = "chomosuke";
           repo = "typst-preview.nvim";
-          rev = "06778d1b3d4d29c34f1faf80947b586f403689ba";
-          hash = "sha256-oBJ+G4jTQw6+MF/SMwaTkGlLQuYLbaAFqJkexf45I1g=";
+          rev = "23db1bd5a32ff0b346817ed72e615c6419b11f48";
+          hash = "sha256-uTVE5KgAd9DAYptnqvos5dTjdURlpffj1LW9o/6qkso=";
         };
       })
     ];

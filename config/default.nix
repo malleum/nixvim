@@ -1,4 +1,4 @@
-{
+{omnis, ...}: {
   imports = [
     ./lsp.nix
     ./options.nix
@@ -6,8 +6,5 @@
     ./zoom.nix
   ];
 
-  config = {
-    lsps.enable = true;
-    vimtex.enable = true;
-  };
+  config.lsps.enable = omnis;
 }

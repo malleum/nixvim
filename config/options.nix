@@ -123,11 +123,6 @@
     }
     {
       mode = ["n"];
-      key = "<leader>F";
-      action = "mzgg=G`z";
-    }
-    {
-      mode = ["n"];
       key = "Y";
       action = "y$";
     }
@@ -155,16 +150,6 @@
       mode = ["n"];
       key = "<C-k>";
       action = "<cmd>cp<cr>";
-    }
-    {
-      mode = ["t"];
-      key = "<C-\\><C-\\>";
-      action = "<C-\\><C-n>";
-    }
-    {
-      mode = ["n"];
-      key = "<C-cr>";
-      action = "<cmd>term<cr>";
     }
   ];
 }
