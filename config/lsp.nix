@@ -143,6 +143,12 @@
       require('lspconfig.ui.windows').default_options = {
         border = _border
       }
+
+      require("lspconfig").tinymist.setup({
+        root_dir = function(_, bufnr)
+          return vim.fs.root(bufnr, { ".git" }) or vim.fn.expand("%:p:h")
+        end,
+      })
     '';
   };
 }
