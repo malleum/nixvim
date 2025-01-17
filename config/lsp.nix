@@ -12,28 +12,18 @@
       lsp = {
         enable = true;
         servers = {
-          bashls.enable = true;
           clangd.enable = true;
-          cssls.enable = true;
           gopls.enable = true;
-          html.enable = true;
           java_language_server.enable = true;
           jsonls.enable = true;
           ltex.enable = true;
           lua_ls.enable = true;
-          marksman.enable = true;
           nixd = {
             enable = true;
             extraOptions.offset_encoding = "utf-8";
           };
           pyright.enable = true;
-          rust_analyzer = {
-            enable = true;
-            installRustc = true;
-            installCargo = true;
-          };
           sqls.enable = true;
-          ts_ls.enable = true;
           tinymist = {
             enable = true;
             extraOptions.offset_encoding = "utf-8";
