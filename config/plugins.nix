@@ -95,23 +95,13 @@ in {
     ];
 
     extraConfigLua = ''
-        require("typst-preview").setup()
+      require("typst-preview").setup()
     '';
-
 
     extraPlugins = with pkgs.vimPlugins; [
       vim-visual-multi
       vim-indent-object
-      (pkgs.vimUtils.buildVimPlugin {
-        pname = "typst-preview.nvim";
-        version = "1.2.1";
-        src = pkgs.fetchFromGitHub {
-          owner = "chomosuke";
-          repo = "typst-preview.nvim";
-          rev = "23db1bd5a32ff0b346817ed72e615c6419b11f48";
-          hash = "sha256-uTVE5KgAd9DAYptnqvos5dTjdURlpffj1LW9o/6qkso=";
-        };
-      })
+      typst-preview-nvim
     ];
   };
 }
