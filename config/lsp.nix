@@ -14,7 +14,7 @@
         servers = {
           clangd.enable = true;
           gopls.enable = true;
-          java_language_server.enable = true;
+          jdtls.enable = true;
           jsonls.enable = true;
           ltex.enable = true;
           lua_ls.enable = true;
