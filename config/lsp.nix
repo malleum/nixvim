@@ -16,6 +16,7 @@
           gopls.enable = true;
           jdtls.enable = true;
           jsonls.enable = true;
+          kotlin_language_server.enable = true;
           ltex.enable = true;
           lua_ls.enable = true;
           nixd = {
