@@ -39,7 +39,7 @@
         };
         minimus = nixvim'.makeNixvimWithModule {
           inherit pkgs;
-          module = import ./config/default.nix {omnis = true;};
+          module = import ./config/default.nix {omnis = false;};
         };
       in {
         checks = {

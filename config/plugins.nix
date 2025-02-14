@@ -29,7 +29,7 @@ in {
         };
       };
 
-      conform-nvim = {
+      conform-nvim = lib.mkIf config.lsps.enable {
         enable = true;
         settings = {
           formatters = {
