@@ -12,6 +12,7 @@
       lsp = {
         enable = true;
         servers = {
+          clojure_lsp.enable = true;
           clangd.enable = true;
           gopls.enable = true;
           jdtls.enable = true;
