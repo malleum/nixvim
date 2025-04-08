@@ -20,19 +20,9 @@
 
     harpoon = {
       enable = true;
-      menu = {
+      settings.menu = {
         width = 100;
         height = 6;
-      };
-      keymaps = {
-        addFile = "<leader>a";
-        toggleQuickMenu = "<leader>o";
-        navFile = {
-          "1" = "<C-A-h>";
-          "2" = "<C-A-t>";
-          "3" = "<C-A-n>";
-          "4" = "<C-A-s>";
-        };
       };
     };
 
@@ -49,6 +39,36 @@
   };
 
   keymaps = [
+    {
+      mode = "n";
+      key = "<leader>a";
+      action.__raw = "function() require'harpoon':list():add() end";
+    }
+    {
+      mode = "n";
+      key = "<leader>o";
+      action.__raw = "function() require'harpoon'.ui:toggle_quick_menu(require'harpoon':list()) end";
+    }
+    {
+      mode = "n";
+      key = "<C-A-h>";
+      action.__raw = "function() require'harpoon':list():select(1) end";
+    }
+    {
+      mode = "n";
+      key = "<C-A-t>";
+      action.__raw = "function() require'harpoon':list():select(2) end";
+    }
+    {
+      mode = "n";
+      key = "<C-A-n>";
+      action.__raw = "function() require'harpoon':list():select(3) end";
+    }
+    {
+      mode = "n";
+      key = "<C-A-s>";
+      action.__raw = "function() require'harpoon':list():select(4) end";
+    }
     {
       mode = ["n"];
       key = "<leader>pt";
