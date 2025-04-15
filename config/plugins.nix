@@ -8,6 +8,7 @@
   stylua = "${pkgs.stylua}/bin/stylua";
   alejandra = "${pkgs.alejandra}/bin/alejandra";
   isort = "${pkgs.isort}/bin/isort";
+  cljfmt = "${pkgs.cljfmt}/bin/cljfmt";
 in {
   config = {
     plugins = {
@@ -40,8 +41,10 @@ in {
             stylua.command = stylua;
             alejandra.command = alejandra;
             isort.command = isort;
+            cljfmt.command = cljfmt;
           };
           formatters_by_ft = {
+            clojure = ["cljfmt"];
             lua = ["stylua"];
             nix = ["alejandra"];
             python = ["isort" "ruff_format"];
