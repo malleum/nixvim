@@ -21,6 +21,7 @@
     termguicolors = true;
     undofile = true;
     updatetime = 50;
+    winborder = "rounded";
     wrap = false;
     writebackup = false;
   };

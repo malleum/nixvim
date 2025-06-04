@@ -3,10 +3,13 @@
     telescope = {
       enable = true;
       extensions.fzf-native.enable = true;
-      settings.defaults.layout_config.horizontal = {
-        prompt_position = "top";
-        width = 0.95;
-        height = 0.85;
+      settings.defaults = {
+        border = false;
+        layout_config.horizontal = {
+          prompt_position = "top";
+          width = 0.95;
+          height = 0.85;
+        };
       };
       keymaps = {
         "<leader>h" = "find_files";
