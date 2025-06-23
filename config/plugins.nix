@@ -8,7 +8,7 @@
   stylua = "${pkgs.stylua}/bin/stylua";
   alejandra = "${pkgs.alejandra}/bin/alejandra";
   isort = "${pkgs.isort}/bin/isort";
-  gofmt = "${pkgs.gofmt}/bin/gofmt";
+  gofmt = "${pkgs.go}/bin/gofmt";
   goimports = "${pkgs.goimports}/bin/goimports";
   cljfmt = "${pkgs.cljfmt}/bin/cljfmt";
 in {
