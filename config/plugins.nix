@@ -10,6 +10,7 @@
   isort = "${pkgs.isort}/bin/isort";
   gofmt = "${pkgs.gofmt}/bin/gofmt";
   goimports = "${pkgs.goimports}/bin/goimports";
+  cljfmt = "${pkgs.cljfmt}/bin/cljfmt";
 in {
   config = {
     plugins = {
@@ -18,10 +19,11 @@ in {
       comment.enable = true;
       diffview.enable = true;
       gitsigns.enable = true;
-      web-devicons.enable = true;
+      nvim-autopairs.enable = true;
       nvim-surround.enable = true;
       todo-comments.enable = true;
-      nvim-autopairs.enable = true;
+      typst-preview.enable = true;
+      web-devicons.enable = true;
 
       treesitter = lib.mkIf config.lsps.enable {
         enable = true;
@@ -44,8 +46,10 @@ in {
             isort.command = isort;
             gofmt.command = gofmt;
             goimports.command = goimports;
+            cljfmt.command = cljfmt;
           };
           formatters_by_ft = {
+            clojure = ["cljfmt"];
             lua = ["stylua"];
             nix = ["alejandra"];
             python = ["isort" "ruff_format"];
@@ -99,14 +103,9 @@ in {
       }
     ];
 
-    extraConfigLua = ''
-      require("typst-preview").setup()
-    '';
-
     extraPlugins = with pkgs.vimPlugins; [
       vim-visual-multi
       vim-indent-object
-      typst-preview-nvim
     ];
   };
 }
