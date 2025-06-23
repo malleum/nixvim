@@ -8,6 +8,8 @@
   stylua = "${pkgs.stylua}/bin/stylua";
   alejandra = "${pkgs.alejandra}/bin/alejandra";
   isort = "${pkgs.isort}/bin/isort";
+  gofmt = "${pkgs.gofmt}/bin/gofmt";
+  goimports = "${pkgs.goimports}/bin/goimports";
 in {
   config = {
     plugins = {
@@ -40,11 +42,14 @@ in {
             stylua.command = stylua;
             alejandra.command = alejandra;
             isort.command = isort;
+            gofmt.command = gofmt;
+            goimports.command = goimports;
           };
           formatters_by_ft = {
             lua = ["stylua"];
             nix = ["alejandra"];
             python = ["isort" "ruff_format"];
+            go = ["goimports" "gofmt"];
             "*" = ["trim_whitespace"];
           };
         };
