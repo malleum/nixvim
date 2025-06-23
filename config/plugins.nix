@@ -9,7 +9,7 @@
   alejandra = "${pkgs.alejandra}/bin/alejandra";
   isort = "${pkgs.isort}/bin/isort";
   gofmt = "${pkgs.go}/bin/gofmt";
-  goimports = "${pkgs.goimports}/bin/goimports";
+  goimports = "${pkgs.goimports-reviser}/bin/goimports-reviser";
   cljfmt = "${pkgs.cljfmt}/bin/cljfmt";
 in {
   config = {
