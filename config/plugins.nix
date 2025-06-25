@@ -11,6 +11,7 @@
   gofmt = "${pkgs.go}/bin/gofmt";
   goimports = "${pkgs.goimports-reviser}/bin/goimports-reviser";
   cljfmt = "${pkgs.cljfmt}/bin/cljfmt";
+  prettierd = "${pkgs.prettierd}/bin/prettierd";
 in {
   config = {
     plugins = {
@@ -47,11 +48,13 @@ in {
             gofmt.command = gofmt;
             goimports.command = goimports;
             cljfmt.command = cljfmt;
+            prettierd.command = prettierd;
           };
           formatters_by_ft = {
             clojure = ["cljfmt"];
             lua = ["stylua"];
             nix = ["alejandra"];
+            javascript = ["prettierd"];
             python = ["isort" "ruff_format"];
             go = ["goimports" "gofmt"];
             "*" = ["trim_whitespace"];
