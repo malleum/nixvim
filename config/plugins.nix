@@ -109,6 +109,19 @@ in {
     extraPlugins = with pkgs.vimPlugins; [
       vim-visual-multi
       vim-indent-object
+      (pkgs.vimUtils.buildVimPlugin {
+        name = "grapplevim";
+        src = ../grapplevim;
+      })
     ];
+    extraConfigLua =
+      # lua
+      ''
+        require('grapplevim').setup({
+          -- You can override any default config values here, for example:
+          -- gravity = 0.2,
+          -- jkhl_impulse = 2.0
+        })
+      '';
   };
 }
