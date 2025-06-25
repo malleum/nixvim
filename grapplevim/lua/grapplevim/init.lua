@@ -1,6 +1,6 @@
 -- grapplevim: A gravity and grappling hook plugin for Neovim
 -- Author: You! (and Gemini)
--- Date: June 25, 2025 (Treesitter-Aware Grapple)
+-- Date: June 25, 2025 (Anisotropic Physics and Symbol Grapple)
 
 local M = {}
 
@@ -30,24 +30,15 @@ local Config = {
 	j_force = 0.05,
 	k_force = 0.05,
 	hl_force = 0.05,
+	-- NEW: Anisotropic distance weighting. Vertical distance counts for more.
+	vertical_distance_weight = 2.0,
 	anchor_sign_text = "⚓",
 	anchor_sign_highlight = "WarningMsg",
 	anchor_overlay_text = "⁜",
 	anchor_overlay_highlight = "healthError",
 	map_leader = "<Enter>",
 	map_grapple = "<Space>",
-	-- NEW: List of Treesitter node types that can be grappled.
-	-- You can add more types here based on the language parsers you have installed.
-	-- Common examples: function_declaration, class_declaration, identifier, parameter
-	grappleable_nodes = {
-		"function",
-		"function_definition",
-		"method",
-		"method_definition",
-		"comment",
-		"line_comment",
-		"block_comment",
-	},
+	-- REMOVED: Treesitter nodes are no longer used.
 }
 
 -- ====================================================================
@@ -78,67 +69,39 @@ local function show_grapple_anchor()
 	end
 end
 
---- NEW: Intelligent anchor finding using Treesitter
---- NEW: Intelligent anchor finding using Treesitter
+--- NEW: Anchor finding logic completely replaced. No longer uses Treesitter.
+-- Grapples onto any non-alphabetic, non-whitespace character.
 local function find_nearest_anchor()
-	local cursor_pos = vim.api.nvim_win_get_cursor(State.winid)
-	local cursor_row, cursor_col = cursor_pos[1] - 1, cursor_pos[2] -- 0-indexed for TS
+	-- CHANGED: Use the visual floating-point position from State for accuracy.
+	local cursor_row, cursor_col = State.pos.y, State.pos.x
 
 	local best_pos = nil
 	local min_dist_sq = math.huge
+	local max_lines = vim.api.nvim_buf_line_count(State.bufnr)
 
-	local ts_parser = vim.treesitter.get_parser(State.bufnr)
-	if not ts_parser then
-		vim.notify("Grapplevim: No Treesitter parser found for this buffer.", vim.log.levels.WARN)
-		return nil
-	end
+	-- Scan a reasonable radius of lines around the cursor for efficiency
+	local search_radius = 50
+	local start_scan = math.max(1, math.floor(cursor_row) - search_radius)
+	local end_scan = math.min(max_lines, math.floor(cursor_row) + search_radius)
 
-	local root = ts_parser:parse()[1]:root()
-	-- CHANGED: Use the pre-computed lookup table from M.setup()
-	local grappleable_types = M.grappleable_lookup
+	for r = start_scan, end_scan do
+		local line_content = vim.api.nvim_buf_get_lines(State.bufnr, r - 1, r, false)[1] or ""
+		-- Iterate through characters using a pattern that finds non-alpha, non-space chars
+		for c, char in line_content:gmatch("()([^a-zA-Z%s])") do
+			-- Calculate precise, weighted distance
+			local dx = (c - 1) - cursor_col -- c is 1-based, cursor_col is 0-based
+			local dy = (r - 1) - (cursor_row - 1)
+			local dist_sq = (dx * dx) + ((dy * Config.vertical_distance_weight) ^ 2)
 
-	-- Recursive function to walk the syntax tree
-	local function walk(node)
-		if not node then
-			return
-		end
-
-		-- Check if the current node is a grappleable type
-		if grappleable_types[node:type()] then
-			local start_row, start_col, end_row, end_col = node:range()
-			local lines = vim.api.nvim_buf_get_lines(State.bufnr, start_row, end_row + 1, false)
-
-			-- Iterate over every single character in the valid node
-			for r = start_row, end_row do
-				local line = lines[r - start_row + 1] or ""
-				local col_start = (r == start_row) and start_col or 0
-				local col_end = (r == end_row) and end_col or #line
-
-				for c = col_start, col_end - 1 do
-					-- Calculate precise distance
-					local dx = c - cursor_col
-					local dy = r - cursor_row
-					local dist_sq = dx * dx + dy * dy
-
-					if dist_sq > 0 and dist_sq < min_dist_sq then
-						min_dist_sq = dist_sq
-						best_pos = { y = r + 1, x = c + 1 } -- Convert back to 1-based for Neovim
-					end
-				end
+			if dist_sq > 0 and dist_sq < min_dist_sq then
+				min_dist_sq = dist_sq
+				best_pos = { y = r, x = c } -- Store 1-based position
 			end
 		end
-
-		-- Recurse into children
-		for child in node:iter_children() do
-			walk(child)
-		end
 	end
-
-	walk(root)
 	return best_pos
 end
 
--- (The rest of the file is unchanged from the hybrid model version)
 local function process_movement_input()
 	if State.input.j then
 		State.vel.y = State.vel.y + Config.j_force
@@ -156,19 +119,29 @@ end
 local function apply_gravity()
 	State.vel.y = State.vel.y + Config.gravity
 end
+
+-- CHANGED: Grapple physics now use weighted distance
 local function apply_grapple_physics()
 	local dx = (State.grapple.anchor.x - 1) - State.pos.x
-	local dy = State.grapple.anchor.y - State.pos.y
-	local dist = math.sqrt(dx * dx + dy * dy)
-	if dist > State.grapple.rope_length then
-		local tension_dx = dx / dist * (dist - State.grapple.rope_length)
-		local tension_dy = dy / dist * (dist - State.grapple.rope_length)
-		State.vel.x = State.vel.x + tension_dx * Config.grapple_tension
-		State.vel.y = State.vel.y + tension_dy * Config.grapple_tension
+	local dy = (State.grapple.anchor.y - 1) - (State.pos.y - 1)
+
+	-- We check the weighted distance to see if the rope is taut
+	local weighted_dist = math.sqrt((dx * dx) + ((dy * Config.vertical_distance_weight) ^ 2))
+
+	if weighted_dist > State.grapple.rope_length then
+		-- But we apply the force along the real, unweighted vector for correct direction
+		local real_dist = math.sqrt(dx * dx + dy * dy)
+		if real_dist > 0 then
+			local tension_dx = dx / real_dist * (weighted_dist - State.grapple.rope_length)
+			local tension_dy = dy / real_dist * (weighted_dist - State.grapple.rope_length)
+			State.vel.x = State.vel.x + tension_dx * Config.grapple_tension
+			State.vel.y = State.vel.y + tension_dy * Config.grapple_tension
+		end
 	end
 	State.vel.x = State.vel.x * Config.grapple_friction
 	State.vel.y = State.vel.y * Config.grapple_friction
 end
+
 local function update()
 	if not State.is_active or not vim.api.nvim_win_is_valid(State.winid) then
 		M.stop()
@@ -226,9 +199,10 @@ local function toggle_grapple()
 		if anchor_pos then
 			State.grapple.active = true
 			State.grapple.anchor = anchor_pos
+			-- CHANGED: Calculate rope length with the new weighted distance
 			local dx = (State.grapple.anchor.x - 1) - State.pos.x
-			local dy = State.grapple.anchor.y - State.pos.y
-			State.grapple.rope_length = math.sqrt(dx * dx + dy * dy)
+			local dy = (State.grapple.anchor.y - 1) - (State.pos.y - 1)
+			State.grapple.rope_length = math.sqrt((dx * dx) + ((dy * Config.vertical_distance_weight) ^ 2))
 			show_grapple_anchor()
 		end
 	end
@@ -312,9 +286,7 @@ end
 function M.setup(user_config)
 	Config = vim.tbl_deep_extend("force", Config, user_config or {})
 	M.namespace_id = vim.api.nvim_create_namespace("grapplevim")
-
-	M.grappleable_lookup = vim.tbl_add_reverse_lookup(vim.deepcopy(Config.grappleable_nodes))
-
+	-- REMOVED: Treesitter lookup is no longer needed
 	vim.keymap.set("n", Config.map_leader, M.start, { desc = "Start Grapplevim" })
 end
 return M
