@@ -117,11 +117,7 @@ in {
     extraConfigLua =
       # lua
       ''
-        require('grapplevim').setup({
-          -- You can override any default config values here, for example:
-          -- gravity = 0.2,
-          -- jkhl_impulse = 2.0
-        })
+        require('grapplevim').setup({ })
       '';
   };
 }
