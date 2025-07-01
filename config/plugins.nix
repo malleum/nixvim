@@ -117,7 +117,7 @@ in {
     extraConfigLua =
       # lua
       ''
-        require('grapplevim').setup({ })
+        require('grapplevim').setup({map_leader = "<Backspace>"})
       '';
   };
 }
