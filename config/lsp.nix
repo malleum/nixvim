@@ -143,26 +143,6 @@
         vim.diagnostic.config{
           float = { border = _border }
         }
-
-        vim.keymap.set("n", "<leader>lr", function()
-          -- This is a simple implementation. It reloads the file in the current buffer.
-          -- It assumes the module name can be derived from the file path.
-          local current_file = vim.api.nvim_buf_get_name(0)
-          if current_file == "" then
-            vim.notify("No file name to reload", vim.log.levels.WARN)
-            return
-          end
-          -- Naive conversion from file path to module name
-          -- e.g., /path/to/plugin/lua/myplugin/init.lua -> myplugin
-          -- You may want a more robust solution for complex projects
-          local module_name = vim.fn.fnamemodify(current_file, ":h:t")
-          if module_name == 'lua' then
-             module_name = vim.fn.fnamemodify(current_file, ":h:h:t")
-          end
-
-          require('plenary.reload').reload_module(module_name)
-          vim.notify("Reloaded module: " .. module_name, vim.log.levels.INFO)
-        end, { desc = "Lua Reload module" })
       '';
   };
 }
