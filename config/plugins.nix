@@ -29,7 +29,7 @@ in {
 
       treesitter = lib.mkIf config.lsps.enable {
         enable = true;
-        grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [bash c gdscript cmake cpp c-sharp css devicetree dockerfile elixir erlang fennel go gomod gosum gowork graphql hcl html java javascript jq json json5 jsonc kotlin lua make markdown nix ocaml php python query ruby rust scala scss sql svelte toml typescript vim yaml zig];
+        grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [bash c gdscript cmake cpp c-sharp css dockerfile go gomod gosum gowork html java javascript jq json json5 jsonc kotlin lua markdown nix ocaml php python query ruby rust scala scss sql svelte toml typescript vim yaml zig];
         settings = {
           highlight.enable = true;
           indent.enable = true;
@@ -122,6 +122,20 @@ in {
       # lua
       ''
         require('grapplevim').setup({map_leader = "<Backspace>"})
+
+        vim.api.nvim_create_autocmd('BufWinEnter', {
+          pattern = '*',
+          callback = function()
+            if vim.bo.filetype == 'gdscript' and vim.wo.previewwindow then
+              vim.treesitter.start()
+            end
+          end,
+        })
+
+        vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+          pattern = '*.gd',
+          command = 'set filetype=gdscript',
+        })
       '';
   };
 }
