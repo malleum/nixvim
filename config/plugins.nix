@@ -29,9 +29,8 @@ in {
 
       treesitter = lib.mkIf config.lsps.enable {
         enable = true;
+        grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [bash c gdscript cmake cpp c-sharp css devicetree dockerfile elixir erlang fennel go gomod gosum gowork graphql hcl html java javascript jq json json5 jsonc kotlin lua make markdown nix ocaml php python query ruby rust scala scss sql svelte toml typescript vim yaml zig];
         settings = {
-          auto_install = true;
-          ensure_installed = "all";
           highlight.enable = true;
           indent.enable = true;
         };
