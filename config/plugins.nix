@@ -4,14 +4,15 @@
   config,
   ...
 }: let
-  ruff = "${pkgs.ruff}/bin/ruff";
-  stylua = "${pkgs.stylua}/bin/stylua";
   alejandra = "${pkgs.alejandra}/bin/alejandra";
-  isort = "${pkgs.isort}/bin/isort";
+  cljfmt = "${pkgs.cljfmt}/bin/cljfmt";
+  gdformat = "${pkgs.gdtoolkit_4}/bin/gdformat";
   gofmt = "${pkgs.go}/bin/gofmt";
   goimports = "${pkgs.goimports-reviser}/bin/goimports-reviser";
-  cljfmt = "${pkgs.cljfmt}/bin/cljfmt";
+  isort = "${pkgs.isort}/bin/isort";
   prettierd = "${pkgs.prettierd}/bin/prettierd";
+  ruff = "${pkgs.ruff}/bin/ruff";
+  stylua = "${pkgs.stylua}/bin/stylua";
 in {
   config = {
     plugins = {
@@ -30,7 +31,9 @@ in {
         enable = true;
         settings = {
           auto_install = true;
+          ensure_installed = "all";
           highlight.enable = true;
+          indent.enable = true;
         };
       };
 
@@ -38,26 +41,28 @@ in {
         enable = true;
         settings = {
           formatters = {
+            alejandra.command = alejandra;
+            cljfmt.command = cljfmt;
+            gdformat.command = gdformat;
+            gofmt.command = gofmt;
+            goimports.command = goimports;
+            isort.command = isort;
+            prettierd.command = prettierd;
             ruff_format = {
               command = ruff;
               prepend_args = ["format"];
             };
             stylua.command = stylua;
-            alejandra.command = alejandra;
-            isort.command = isort;
-            gofmt.command = gofmt;
-            goimports.command = goimports;
-            cljfmt.command = cljfmt;
-            prettierd.command = prettierd;
           };
           formatters_by_ft = {
+            "*" = ["trim_whitespace"];
             clojure = ["cljfmt"];
+            gdscript = ["gdformat"];
+            go = ["goimports" "gofmt"];
+            javascript = ["prettierd"];
             lua = ["stylua"];
             nix = ["alejandra"];
-            javascript = ["prettierd"];
             python = ["isort" "ruff_format"];
-            go = ["goimports" "gofmt"];
-            "*" = ["trim_whitespace"];
           };
         };
       };

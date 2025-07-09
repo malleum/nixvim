@@ -14,6 +14,10 @@
         servers = {
           clojure_lsp.enable = true;
           clangd.enable = true;
+          gdscript = {
+            enable = true;
+            package = null;
+          };
           gopls.enable = true;
           jdtls.enable = true;
           jsonls.enable = true;
